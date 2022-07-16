@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhml" xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Employee Web Application</title>
+         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+
+    <h2 class="h2"><a href="/createBookForm"> Create new book</a></h2>
+
+        <h2 class="h2">List of books</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Year</th>
+                    <th >Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:if="${books.empty}">
+                    <td colspan="3">No data</td>
+                </tr>
+                <tr th:each="book : ${books}">
+                    <td><span th:text="${book.title}"> Title </span></td>
+                    <td><span th:text="${book.year}"> Year </span></td>
+                    <td> <a th:href="@{/deleteBook/{id}(id=${book.id})}">Supprimer</a></td>
+
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
